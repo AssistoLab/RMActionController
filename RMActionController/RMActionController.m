@@ -76,6 +76,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 @property (nonatomic, weak) RMActionController *controller;
 
 @property (nonatomic, strong, readwrite) NSString *title;
+@property (nonatomic, strong, readwrite) NSString *accessibilityIdentifier;
 @property (nonatomic, strong, readwrite) UIImage *image;
 @property (nonatomic, assign, readwrite) RMActionStyle style;
 
@@ -823,9 +824,11 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 @implementation RMAction
 
 #pragma mark - Class
-+ (instancetype)actionWithTitle:(NSString *)title style:(RMActionStyle)style andHandler:(void (^)(RMActionController *controller))handler {
++ (instancetype)actionWithLocalizationTitleKey:(NSString *)localizationTitleKey style:(RMActionStyle)style andHandler:(void (^)(RMActionController *controller))handler {
     RMAction *action = [RMAction actionWithStyle:style andHandler:handler];
-    action.title = title;
+    
+    action.title = PPLocalizedString(localizationTitleKey);
+    action.accessibilityIdentifier = localizationTitleKey;
     
     return action;
 }
@@ -931,6 +934,10 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
         [actionButton setImage:self.image forState:UIControlStateNormal];
     } else {
         [actionButton setTitle:@"Unknown title" forState:UIControlStateNormal];
+    }
+    
+    if (self.accessibilityIdentifier) {
+        actionButton.accessibilityIdentifier = self.accessibilityIdentifier;
     }
     
     [actionButton addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionButton(44)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(actionButton)]];

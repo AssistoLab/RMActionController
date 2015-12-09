@@ -213,13 +213,13 @@ typedef NS_ENUM(NSInteger, RMActionStyle) {
 /**
  *  Returns a new instance of RMAction.
  *
- *  @param title   The title of the action.
+ *  @param localizationTitleKey   The key for the title of the action.
  *  @param style   The style of the action.
  *  @param handler A block that is called when the action has been tapped.
  *
  *  @return The new instance of RMAction.
  */
-+ (instancetype)actionWithTitle:(NSString *)title style:(RMActionStyle)style andHandler:(void (^)(RMActionController *controller))handler;
++ (instancetype)actionWithLocalizationTitleKey:(NSString *)localizationTitleKey style:(RMActionStyle)style andHandler:(void (^)(RMActionController *controller))handler;
 
 /**
  *  Returns a new instance of RMAction.
