@@ -824,11 +824,14 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 @implementation RMAction
 
 #pragma mark - Class
-+ (instancetype)actionWithLocalizationTitleKey:(NSString *)localizationTitleKey style:(RMActionStyle)style andHandler:(void (^)(RMActionController *controller))handler {
++ (instancetype)actionWithLocalizedTitle:(NSString *)localizedTitle
+				  accessibiltyIdentifier:(NString *) accessibiltyIdentifier
+								   style:(RMActionStyle)style andHandler:(void (^)(RMActionController *controller))handler
+{
     RMAction *action = [RMAction actionWithStyle:style andHandler:handler];
     
-    action.title = PPLocalizedString(localizationTitleKey);
-    action.accessibilityIdentifier = localizationTitleKey;
+    action.title = localizedTitle;
+    action.accessibilityIdentifier = accessibiltyIdentifier;
     
     return action;
 }
