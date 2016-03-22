@@ -219,7 +219,7 @@ typedef NS_ENUM(NSInteger, RMActionStyle) {
  *
  *  @return The new instance of RMAction.
  */
-+ (instancetype)actionWithLocalizedTitle:(NSString *)localizedTitle accessibiltyIdentifier:(NString *) accessibiltyIdentifier style:(RMActionStyle)style andHandler:(void (^)(RMActionController *controller))handler;
++ (instancetype)actionWithLocalizedTitle:(NSString *)localizedTitle accessibiltyIdentifier:(NSString *) accessibiltyIdentifier style:(RMActionStyle)style andHandler:(void (^)(RMActionController *controller))handler;
 
 /**
  *  Returns a new instance of RMAction.

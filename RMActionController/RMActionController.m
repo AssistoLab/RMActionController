@@ -825,7 +825,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 
 #pragma mark - Class
 + (instancetype)actionWithLocalizedTitle:(NSString *)localizedTitle
-				  accessibiltyIdentifier:(NString *) accessibiltyIdentifier
+				  accessibiltyIdentifier:(NSString *) accessibiltyIdentifier
 								   style:(RMActionStyle)style andHandler:(void (^)(RMActionController *controller))handler
 {
     RMAction *action = [RMAction actionWithStyle:style andHandler:handler];
